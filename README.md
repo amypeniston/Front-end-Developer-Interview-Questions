@@ -29,17 +29,17 @@ This file contains a number of front-end interview questions that can be used wh
 * What UI, Security, Performance, SEO, Maintainability or Technology considerations do you make while building a web application or site?
 * Talk about your preferred development environment. (OS, Editor or IDE, Browsers, Tools, etc.)
 * Which version control systems are you familiar with?
-  **Version control is a method of keeping track of changes to a file (or set of files). It allows you to revert to previous states, record modifications and recover from issues, should they arise.
-  **The most basic form of a VCS is to locally copy file directories, labeling with a timestamp, as a project progresses. This is often error prone and difficult to maintain.
-  **To deal with this, programmers created the first iteration of VCSs using local databases that kept track of revisions. Today, the MAC OS X operating system developer tools comes preinstalled with one variation of this VCS called RCS. It works by keeping patch sets that contain the differences between files.
-  **The next iteration of VCSs were Centralized Version Control Systems (CVCSs), which employ a central server and allow for collaboration between multiple developers. Examples of CVCSs include CVS, Subversion, and Perforce. All enable developers to check out files from a central repository and are easier to administer than databases of changes stored locally on each machine. Both CVCSs and local VCSs run the risk of total data loss should either point of storage fail.
-  **Distributed Version Control Systems (DVCSs) safeguard against file loss by cloning repositories in their entirety to each client. This means that if any server dies, any of the client repositories can be copied back up to restore the data. Examples of DVCSs include Git, Mercurial, Bazaar and Darcs.
+  *Version control is a method of keeping track of changes to a file (or set of files). It allows you to revert to previous states, record modifications and recover from issues, should they arise.
+  *The most basic form of a VCS is to locally copy file directories, labeling with a timestamp, as a project progresses. This is often error prone and difficult to maintain.
+  *To deal with this, programmers created the first iteration of VCSs using local databases that kept track of revisions. Today, the MAC OS X operating system developer tools comes preinstalled with one variation of this VCS called RCS. It works by keeping patch sets that contain the differences between files.
+  *The next iteration of VCSs were Centralized Version Control Systems (CVCSs), which employ a central server and allow for collaboration between multiple developers. Examples of CVCSs include CVS, Subversion, and Perforce. All enable developers to check out files from a central repository and are easier to administer than databases of changes stored locally on each machine. Both CVCSs and local VCSs run the risk of total data loss should either point of storage fail.
+  *Distributed Version Control Systems (DVCSs) safeguard against file loss by cloning repositories in their entirety to each client. This means that if any server dies, any of the client repositories can be copied back up to restore the data. Examples of DVCSs include Git, Mercurial, Bazaar and Darcs.
 * Can you describe your workflow when you create a web page?
-  **Planning: Discussion with client, acknowledgement of contract, background research, questions like "what are the existing assets, media, color schemes, logos, styles, fonts etc.?" - "what are your top 3 goals?" - "who will be maintaining the site?"
-  **Mock-ups: wireframing (Axure), mock designs (Photoshop, Illustrator), flow diagrams
-  **Iterations: revisions with client, testing in browser, "is site satisfying goals?", sign off by client
-  **Building: translating finalized mock designs into responsive html/css/javascript, creation of back-end databases or server side code, intermediary sign offs by client if needed 
-  **The Final Nod: launch site, push assets live, provide client with agreed upon resources
+  *Planning: Discussion with client, acknowledgement of contract, background research, questions like "what are the existing assets, media, color schemes, logos, styles, fonts etc.?" - "what are your top 3 goals?" - "who will be maintaining the site?"
+  *Mock-ups: wireframing (Axure), mock designs (Photoshop, Illustrator), flow diagrams
+  *Iterations: revisions with client, testing in browser, "is site satisfying goals?", sign off by client
+  *Building: translating finalized mock designs into responsive html/css/javascript, creation of back-end databases or server side code, intermediary sign offs by client if needed 
+  *The Final Nod: launch site, push assets live, provide client with agreed upon resources
 * If you have 5 different stylesheets, how would you best integrate them into the site?
 * Can you describe the difference between progressive enhancement and graceful degradation?
 * How would you optimize a website's assets/resources?
