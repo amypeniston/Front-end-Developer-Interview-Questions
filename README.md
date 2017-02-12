@@ -74,18 +74,21 @@ This file contains a number of front-end interview questions that can be used wh
 * **If you jumped on a project and they used tabs and you used spaces, what would you do?**
   * I would switch to tabs as that is the convention for the project. I would also look into configuring my text editor to help me adhere to this convention. 
 * **Write a simple slideshow page**
-  ```
+
+  ```html
   <div class="slide"><img src="http://placehold.it/350x150"></div>
   <div class="slide"><img src="http://placehold.it/350x150"></div>
   <div class="slide"><img src="http://placehold.it/350x150"></div>
   ```
-  ```
+  
+  ```css
   .slide img {
     width: 100%;
     height: 100%;
   }
   ```
-  ```
+  
+  ```javascript
   (function slideshow(i) {
     if (i === undefined) {i = 0;}
     var index = i;
