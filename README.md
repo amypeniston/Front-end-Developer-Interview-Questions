@@ -25,25 +25,24 @@ This file contains a number of front-end interview questions that can be used wh
 ####[[⬆]](#toc) <a name='general'>General Questions:</a>
 
 * **What did you learn yesterday/this week?**
-  * So much, it's not even funny :)
 * **What excites or interests you about coding?**
-  * The ability to accomplish a task that would be either extremely difficult or time consuming with just a few lines of code. That nothing is ever "finished"; projects, frameworks, even entire languages evolve over time. 
+  * How different languages differ in their implementation of functionality; uncovering quirks; the evolution of syntax as languages evolve.
 * **What UI, Security, Performance, SEO, Maintainability or Technology considerations do you make while building a web application or site?**
-  * UI: if it's possible to make a design simpler- I will! minimalism in design, large font size, large buttons, clean and easy to read, removing clutter on small screens
-  * Security: Wordpress admin privileges, hashed passwords, session storage, would like to learn more about this field
-  * Performance: CSS sprites to improve load times, Google developer tools to assess latency, compressed images (would like to learn more about SVGs)
-  * SEO: descriptive titles, keywords in header tags
-  * Maintainability: commented code, organized directories, smart file naming conventions, hierarchical CSS (would like to develop a better system here)
-  * Technology: resolution considerations affect images, data limitations on mobile browsers, compatibility across devices
+  * UI: simplicity of design, legibility, minimalism
+  * Security: Wordpress admin privileges, 2-factor authentication, never letting credit card information touch the server, OAuth - would like to learn more about this field
+  * Performance: Google developer tools to assess latency, compressed stylesheets, initial loading of essential CSS styles, lazy-loading, targeted loading of retina images
+  * SEO: descriptive titles, keywords in header tags and throughout body content, sitemaps, robots.txt
+  * Maintainability: organized code, file naming conventions, bower 3rd party library management, unit testing 
+  * Technology: data limitations on mobile browsers, compatibility across devices, Wordpress for admin management
 * **Talk about your preferred development environment. (OS, Editor or IDE, Browsers, Tools, etc.)**
-  * OS: I run both Mac OS X Yosemite and Windows 7. I've worked with Linux in the past, but not in depth.
-  * Editor: Sublime Text 3- It's clean, works with Emmet and a variety of other packages and is highly customizable. 
-  * IDE/Browser/Tools: I use Codekit on my Mac for pre-processing and browser refreshing. MAMP for the local server. On Windows I use WAMP paired with Prepos. 
+  * I work both on Mac and Windows. I have experience using Linux in the past, but not in depth.
+  * Editor: Atom & Sublime Text
+  * IDE/Browser/Tools: Codekit on my Mac for pre-processing and browser refreshing. MAMP for the local server. On Windows I use WAMP paired with Prepos. Familiar with Xcode and Netbeans for C and Java compiling.
 * **What is version control and which system are you most familiar with?**
-  * Personally, I'm most familiar with git. 
+  * Git 
   * Version control is a method of keeping track of changes to a file (or set of files). It allows you to revert to previous states, record modifications and recover from issues, should they arise.
   * The most basic form of a VCS is to locally copy file directories, labeling with a timestamp, as a project progresses. This is often error prone and difficult to maintain.
-  * To deal with this, programmers created the first iteration of VCSs using local databases that kept track of revisions. Today, the MAC OS X operating system developer tools comes preinstalled with one variation of this VCS called RCS. It works by keeping patch sets that contain the differences between files.
+  * To deal with this, programmers created the first iteration of VCSs using local databases that kept track of revisions. Today, the Mac OS developer tools come preinstalled with one variation of this VCS called RCS. It works by keeping patch sets that contain the differences between files.
   * The next iteration of VCSs were Centralized Version Control Systems (CVCSs), which employ a central server and allow for collaboration between multiple developers. Examples of CVCSs include CVS, Subversion, and Perforce. All enable developers to check out files from a central repository and are easier to administer than databases of changes stored locally on each machine. Both CVCSs and local VCSs run the risk of total data loss should either point of storage fail.
   * Distributed Version Control Systems (DVCSs) safeguard against file loss by cloning repositories in their entirety to each client. This means that if any server dies, any of the client repositories can be copied back up to restore the data. Examples of DVCSs include Git, Mercurial, Bazaar and Darcs.
 * **Can you describe your workflow when you create a web page?**
@@ -56,28 +55,67 @@ This file contains a number of front-end interview questions that can be used wh
   * If they were project specific stylesheets, I would @import each as SASS files into the primary stylesheet. Main goal here would be to limit the number of separate HTTP requests that occur do to multiple `<link rel="stylesheet">` in the `<head>`.
   * If they were vendor stylesheets, I would make sure to minify all CSS, combining them into one file if appropriate.
 * **Can you describe the difference between progressive enhancement and graceful degradation?**
-  * In the world of responsive design, there are two main schools of thought: mobile-first and desktop-first. Mobile-first designers begin at the level of mobile devices and work "upwards", progressively enhancing/adding to the site/app as screen real estate increases. Desktop-first designers do the reverse, beginning at the level of desktop screens and shrinking/removing unnecessary elements to ensure that the site/app gracefully degrades onto mobile devices.  
+  * Progressive enhancement: start with a basic design and progressively enhance or add features for browsers that support them. This method is aligned with iterative design methods such as Agile. 
+  * Graceful degradation: provide a fall-back for older browsers so that they can still display important content within a more basic UI.
 * **How would you optimize a website's assets/resources?**
-  * Whenever possible, decrease file download sizes. Whether that means compressing images, minifying source code, combining files or using lightweight, semantic markup.
-  * Modernize: get rid of old technologies that load slowly, like iFrames or flash. 
+  * Decrease the number and size of files that are downloaded by compressing images, minifying source code, combining files or streamlining markup.
+  * Modernize: replace old technologies that load slowly, like iFrames or flash. 
   * Make as few HTTP requests as possible. 
   * Place Javascript `<script>` calls at the bottom of the page.
-* **Traditionally, why has it been better to serve site assets from multiple domains?**
-  * It increases the number of resources that can be served in parallel. However, you must weigh the ability to have multiple HTTP requests occur at the same time with the cost of the upfront DNS lookup (for example, of the subdomain serving the files).
-* How many resources will a browser download from a given domain at a time?
-  * What are the exceptions?
-* Name 3 ways to decrease page load (perceived or actual load time).
-* If you jumped on a project and they used tabs and you used spaces, what would you do?
-* Write a simple slideshow page
-* What tools do you use to test your code's performance?
-* If you could master one technology this year, what would it be?
-* What are the differences between Long-Polling, Websockets and SSE?
-* Explain the importance of standards and standards bodies.
-* What is FOUC? How do you avoid FOUC?
-* Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.
-* Explain what ARIA and screenreaders are, and how to make a website accessible.
-* Explain some of the pros and cons for CSS animations versus JavaScript animations
-* Explain the following request and response headers:
+  * Use SVG instead of PNG files.
+* **How many resources will a browser download from a given domain at a time?**
+  * Typically 6-8, depending on the browser
+* **What are the exceptions?**
+  * We can use subdomains pointing to the same domain to increase the concurrency of our downloads.
+* **Name 3 ways to decrease page load (perceived or actual load time).**
+  * Add a pre-loader graphic or other visual feedback so that the user is aware of loading progress
+  * Load key CSS for "above-the-fold" elements as inline styles at the top of the page
+  * Use lazy-loading of images to reduce the number of elements to load
+* **If you jumped on a project and they used tabs and you used spaces, what would you do?**
+  * I would switch to tabs as that is the convention for the project. I would also look into configuring my text editor to help me adhere to this convention. 
+* **Write a simple slideshow page**
+  ```
+  <div class="slide"><img src="http://placehold.it/350x150"></div>
+  <div class="slide"><img src="http://placehold.it/350x150"></div>
+  <div class="slide"><img src="http://placehold.it/350x150"></div>
+  ```
+  ```
+  .slide img {
+    width: 100%;
+    height: 100%;
+  }
+  ```
+  ```
+  (function slideshow(i) {
+    if (i === undefined) {i = 0;}
+    var index = i;
+    var slides = document.getElementsByClassName('slide');
+    for (var i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    index++;
+    if (index > slides.length) {index = 1;}
+    slides[index - 1].style.display = "block";
+    setTimeout(slideshow,2000,index);
+  })();
+  ```
+* **What tools do you use to test your code's performance?**
+  * Google PageSpeed Tools, Chrome Developer Tools
+* **If you could master one technology this year, what would it be?**
+  * React & Redux
+* **What are the differences between Long-Polling, Websockets and SSE?**
+  * These are different ways of requesting and receiving information from the server by the client.
+  * Long-Polling: Server waits until there is new information available before resending to the client. The client then resends the request and the process begins again.
+  * SSE (Server Sent Events): A connection is opened to allow the server to continually send new information to the client without needing to receive a new request every time.
+  * Websockets: A connection is opened to allow the server and client to communicate continually, for real-time two-way traffic.
+* **Explain the importance of standards and standards bodies.**
+* **What is Flash of Unstyled Content? How do you avoid FOUC?**
+  * FOUC occurs on page load when the browser tries to render elements for which it has yet to load styles. This can happen when styles are placed lower down on the page or when CSS rendering is dependent on asynchronous scripts.
+  * To avoid FOUC CSS should be placed in the head of the page. Key styles should not be loaded using scripts.
+* **Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.**
+* **Explain what ARIA and screenreaders are, and how to make a website accessible.**
+* **Explain some of the pros and cons for CSS animations versus JavaScript animations**
+* **Explain the following request and response headers:**
   * Diff. between Expires, Date, Age and If-Modified-...
   * DNT
   * Cache-Control
