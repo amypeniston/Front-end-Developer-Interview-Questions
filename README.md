@@ -14,7 +14,6 @@ This file contains a number of front-end interview questions that can be used wh
   1. [Coding Questions](#jscode)
   1. [Fun Questions](#fun)
   
-
 ## <a name='toc'>Getting Involved</a>
 
   1. [Original Contributors](#contributors)
@@ -63,6 +62,7 @@ This file contains a number of front-end interview questions that can be used wh
   * Make as few HTTP requests as possible. 
   * Place Javascript `<script>` calls at the bottom of the page.
   * Use SVG instead of PNG files.
+  * Investigate caching options.
 * **How many resources will a browser download from a given domain at a time?**
   * Typically 6-8, depending on the browser
 * **What are the exceptions?**
@@ -112,19 +112,29 @@ This file contains a number of front-end interview questions that can be used wh
   * SSE (Server Sent Events): A connection is opened to allow the server to continually send new information to the client without needing to receive a new request every time.
   * Websockets: A connection is opened to allow the server and client to communicate continually, for real-time two-way traffic.
 * **Explain the importance of standards and standards bodies.**
+  * Standards enable us to write code that is guaranteed to work across platforms and browsers. Without standards we cannot be confident in the consistency and stability of our code as technologies evolve.
 * **What is Flash of Unstyled Content? How do you avoid FOUC?**
   * FOUC occurs on page load when the browser tries to render elements for which it has yet to load styles. This can happen when styles are placed lower down on the page or when CSS rendering is dependent on asynchronous scripts.
   * To avoid FOUC CSS should be placed in the head of the page. Key styles should not be loaded using scripts.
 * **Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.**
+  * The URL is translated to an IP Address through a series of progressive checks and queries. First the browser checks its local cache, then the OS cache, then the router cache, then the ISP cache and then finally, if it still hasn't found the IP address, it will look out through top-level nameservers until it hits the nameserver associated with the domain.
+  * The IP address is used to open a TCP connection over which an HTTP request is sent.
+  * The server responds to the HTTP request and passes requested data back to client browser (assuming status code 200). 
+  * The browser parses the response according to HTTP headers, rendering HTML on the screen.
 * **Explain what ARIA and screenreaders are, and how to make a website accessible.**
+  * ARIA is a set of ways to make web content accessible to people with disabilities. By adding alt tags to images and icons we allow someone who is blind to have visual content translated into speech.
 * **Explain some of the pros and cons for CSS animations versus JavaScript animations**
+  * CSS animations leverage the browser's graphic engine (and thus are less CPU-intensive) but are less flexible in terms of design and logic. May also not be supported in some browsers.
+  * Javascript animations are CPU-intensive but offer you precise control over behavior and design.
 * **Explain the following request and response headers:**
-  * Diff. between Expires, Date, Age and If-Modified-...
-  * DNT
-  * Cache-Control
-  * Transfer-Encoding
-  * ETag
-  * X-Frame-Options
+  * Difference between Expires, Date, Age and If-Modified: Expires - when does response become "stale". Date - when was response sent. Age - how long as object been in the cache. If-Modified-Since: returns a *304 Not Modified* if content is unchanged since a certain date.
+  * DNT: Requests that a web application disable their tracking of a user.
+  * Cache-Control: Instructs the browser or proxy whether or not to store content or whether to check cache content with the server before using it.
+  * Transfer-Encoding: What type of encoding was used to transfer the data to the user (current methods include: chunked, compress, deflate, gzip and identity).
+  * ETag: An identifier for a specific version of a resource, for example a message digest
+* **What does CORS stand for and what issue does it address?**
+  * CORS stands for Cross-Origin Resource Sharing. It is a W3C spec that enables resources to be loaded from a domain that is different than domain from which the requesting content is being served. The HTTP header Origin is checked by the server and it will either allow or disallow the request, sending back a response with Access-Control-Allow-Origin set to the request's origin. The browser then checks to see if Origin matches Access-Control-Allow-Origin.
+  * CORS enables popular web functionality including API calls and web fonts.
 
 ####[[⬆]](#toc) <a name='html'>HTML Questions:</a>
 
@@ -213,6 +223,19 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * What is `"use strict";`? what are the advantages and disadvantages to using it?
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, `"buzz"` at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
+* Describe inheritance and the prototype chain in JavaScript and give an example (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
+* Compare and contrast objects and hashtables in JavaScript (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
+* Consider the code snippet below. What will the alert display? (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
+```javascript
+var foo = new Object();
+var bar = new Object();
+var map = new Object();
+
+map[foo] = "foo";
+map[bar] = "bar";
+
+alert(map[foo]);
+```
 
 ####[[⬆]](#toc) <a name='jquery'>jQuery Questions:</a>
 
