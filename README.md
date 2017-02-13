@@ -13,14 +13,14 @@ This file contains a number of front-end interview questions that can be used wh
   1. [jQuery Questions](#jquery)
   1. [Coding Questions](#jscode)
   1. [Fun Questions](#fun)
-  
+
 ## <a name='toc'>Getting Involved</a>
 
   1. [Original Contributors](#contributors)
   1. [Recent Contributors](https://github.com/h5bp/Front-end-Developer-Interview-Questions/graphs/contributors)
   1. [How to Contribute](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/CONTRIBUTING.md)
   1. [License](https://github.com/h5bp/Front-end-Developer-Interview-Questions/blob/master/LICENSE.md)
-  
+
 ####[[⬆]](#toc) <a name='general'>General Questions:</a>
 
 * **What did you learn yesterday/this week?**
@@ -31,14 +31,14 @@ This file contains a number of front-end interview questions that can be used wh
   * Security: Wordpress admin privileges, 2-factor authentication, never letting credit card information touch the server, OAuth - would like to learn more about this field
   * Performance: Google developer tools to assess latency, compressed stylesheets, initial loading of essential CSS styles, lazy-loading, targeted loading of retina images
   * SEO: descriptive titles, keywords in header tags and throughout body content, sitemaps, robots.txt
-  * Maintainability: organized code, file naming conventions, bower 3rd party library management, unit testing 
+  * Maintainability: organized code, file naming conventions, bower 3rd party library management, unit testing
   * Technology: data limitations on mobile browsers, compatibility across devices, Wordpress for admin management
 * **Talk about your preferred development environment. (OS, Editor or IDE, Browsers, Tools, etc.)**
   * I work both on Mac and Windows. I have experience using Linux in the past, but not in depth.
   * Editor: Atom & Sublime Text
   * IDE/Browser/Tools: Codekit on my Mac for pre-processing and browser refreshing. MAMP for the local server. On Windows I use WAMP paired with Prepos. Familiar with Xcode and Netbeans for C and Java compiling.
 * **What is version control and which system are you most familiar with?**
-  * Git 
+  * Git
   * Version control is a method of keeping track of changes to a file (or set of files). It allows you to revert to previous states, record modifications and recover from issues, should they arise.
   * The most basic form of a VCS is to locally copy file directories, labeling with a timestamp, as a project progresses. This is often error prone and difficult to maintain.
   * To deal with this, programmers created the first iteration of VCSs using local databases that kept track of revisions. Today, the Mac OS developer tools come preinstalled with one variation of this VCS called RCS. It works by keeping patch sets that contain the differences between files.
@@ -48,18 +48,18 @@ This file contains a number of front-end interview questions that can be used wh
   * Planning: Discussion with client, acknowledgement of contract, background research, questions like "what are the existing assets, media, color schemes, logos, styles, fonts etc.?" - "what are your top 3 goals?" - "who will be maintaining the site?"
   * Mock-ups: wireframing (Axure), mock designs (Photoshop, Illustrator), flow diagrams
   * Iterations: revisions with client, testing in browser, "is site satisfying goals?", sign off by client
-  * Building: translating finalized mock designs into responsive html/css/javascript, creation of back-end databases or server side code, intermediary sign offs by client if needed 
+  * Building: translating finalized mock designs into responsive html/css/javascript, creation of back-end databases or server side code, intermediary sign offs by client if needed
   * The Final Nod: launch site, push assets live, provide client with agreed upon resources
 * **If you have 5 different stylesheets, how would you best integrate them into the site?**
   * If they were project specific stylesheets, I would @import each as SASS files into the primary stylesheet. Main goal here would be to limit the number of separate HTTP requests that occur do to multiple `<link rel="stylesheet">` in the `<head>`.
   * If they were vendor stylesheets, I would make sure to minify all CSS, combining them into one file if appropriate.
 * **Can you describe the difference between progressive enhancement and graceful degradation?**
-  * Progressive enhancement: start with a basic design and progressively enhance or add features for browsers that support them. This method is aligned with iterative design methods such as Agile. 
+  * Progressive enhancement: start with a basic design and progressively enhance or add features for browsers that support them. This method is aligned with iterative design methods such as Agile.
   * Graceful degradation: provide a fall-back for older browsers so that they can still display important content within a more basic UI.
 * **How would you optimize a website's assets/resources?**
   * Decrease the number and size of files that are downloaded by compressing images, minifying source code, combining files or streamlining markup.
-  * Modernize: replace old technologies that load slowly, like iFrames or flash. 
-  * Make as few HTTP requests as possible. 
+  * Modernize: replace old technologies that load slowly, like iFrames or flash.
+  * Make as few HTTP requests as possible.
   * Place Javascript `<script>` calls at the bottom of the page.
   * Use SVG instead of PNG files.
   * Investigate caching options.
@@ -72,7 +72,7 @@ This file contains a number of front-end interview questions that can be used wh
   * Load key CSS for "above-the-fold" elements as inline styles at the top of the page
   * Use lazy-loading of images to reduce the number of elements to load
 * **If you jumped on a project and they used tabs and you used spaces, what would you do?**
-  * I would switch to tabs as that is the convention for the project. I would also look into configuring my text editor to help me adhere to this convention. 
+  * I would switch to tabs as that is the convention for the project. I would also look into configuring my text editor to help me adhere to this convention.
 * **Write a simple slideshow page**
 
   ```html
@@ -80,14 +80,14 @@ This file contains a number of front-end interview questions that can be used wh
   <div class="slide"><img src="http://placehold.it/350x150"></div>
   <div class="slide"><img src="http://placehold.it/350x150"></div>
   ```
-  
+
   ```css
   .slide img {
     width: 100%;
     height: 100%;
   }
   ```
-  
+
   ```javascript
   (function slideshow(i) {
     if (i === undefined) {i = 0;}
@@ -119,7 +119,7 @@ This file contains a number of front-end interview questions that can be used wh
 * **Do your best to describe the process from the time you type in a website's URL to it finishing loading on your screen.**
   * The URL is translated to an IP Address through a series of progressive checks and queries. First the browser checks its local cache, then the OS cache, then the router cache, then the ISP cache and then finally, if it still hasn't found the IP address, it will look out through top-level nameservers until it hits the nameserver associated with the domain.
   * The IP address is used to open a TCP connection over which an HTTP request is sent.
-  * The server responds to the HTTP request and passes requested data back to client browser (assuming status code 200). 
+  * The server responds to the HTTP request and passes requested data back to client browser (assuming status code 200).
   * The browser parses the response according to HTTP headers, rendering HTML on the screen.
 * **Explain what ARIA and screenreaders are, and how to make a website accessible.**
   * ARIA is a set of ways to make web content accessible to people with disabilities. By adding alt tags to images and icons we allow someone who is blind to have visual content translated into speech.
@@ -172,13 +172,13 @@ This file contains a number of front-end interview questions that can be used wh
 * How would you implement a web design comp that uses non-standard fonts?
 * Explain how a browser determines what elements match a CSS selector.
 * Explain your understanding of the box model and how you would tell the browser in CSS to render your layout in different box models.
-* What does ```* { box-sizing: border-box; }``` do? What are its advantages? 
+* What does ```* { box-sizing: border-box; }``` do? What are its advantages?
 * List as many values for the display property that you can remember.
 * What's the difference between inline and inline-block?
 * What's the difference between a relative, fixed, absolute and statically positioned element?
 * The 'C' in CSS stands for Cascading.  How is priority determined in assigning styles (a few examples)?  How can you use this system to your advantage?
 * What existing CSS frameworks have you used locally, or in production? (Bootstrap, PureCSS, Foundation etc.)
-  * If so, which ones? If you could, how would you change/improve them? 
+  * If so, which ones? If you could, how would you change/improve them?
 * Have you played around with the new CSS Flexbox or Grid specs?
 * How is responsive design different from adaptive design?
 * Have you ever worked with retina graphics? If so, when and what techniques did you use?
@@ -190,7 +190,7 @@ This file contains a number of front-end interview questions that can be used wh
 * Explain how prototypal inheritance works
 * How do you go about testing your JavaScript?
 * AMD vs. CommonJS?
-* Explain why the following doesn't work as an IIFE: `function foo(){ }();`. 
+* Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
   * What needs to be changed to properly make it an IIFE?
 * What's the difference between a variable that is: `null`, `undefined` or `undeclared`?
   * How would you go about checking for any of these states?
@@ -224,8 +224,26 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, `"buzz"` at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
 * Describe inheritance and the prototype chain in JavaScript and give an example (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
-* Compare and contrast objects and hashtables in JavaScript (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
-* Consider the code snippet below. What will the alert display? (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
+  * Inheritance in JavaScript is made possible because objects reference other objects called prototypes. When a reference is made to a property that an object does not itself contain, its prototype is checked. If the first prototype also does not contain this property, its prototype is checked. This process repeats until the end of the "prototype chain" is reached, upon which the property is set as undefined.
+```
+function Person() { this.species = "human" };
+
+function Child() { this.age = "young" };
+Child.prototype = new Person();
+
+function Adult() { this.age = "mature" };
+Adult.prototype = new Person();
+
+var sally = new Child();
+var fred = new Adult();
+
+console.log(sally.species); // "human"
+console.log(fred.age); // "mature"
+```
+
+* **Compare and contrast objects and hashtables in JavaScript (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
+  * In JavaScript, objects are essentially hashtables consisting of key-value pairs. Keys must be strings or will be converted to strings automatically.
+* **Consider the code snippet below. What will the alert display? (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
 ```javascript
 var foo = new Object();
 var bar = new Object();
@@ -236,7 +254,12 @@ map[bar] = "bar";
 
 alert(map[foo]);
 ```
-
+  * In JavaScript, object keys must be strings and will be silently converted into a string if otherwise. When we set `map[foo] = "foo"`, since `foo` is an empty object and not a string, it is converted into a string using its `.toString()` method. Neither `foo` nor `bar` have custom `.toString()` methods so the default Object method is used. By default, `Object.toString() = "[Object object]"` and so we are essentially setting:
+```
+map["[Object object]"] = "foo";
+map["[Object object]"] = "bar";
+```
+  Now it is clear that we are overwriting the same key with a new value, `bar`. And hence `alert(map[foo]) = alert(["[Object object]"]) = "bar"`.
 ####[[⬆]](#toc) <a name='jquery'>jQuery Questions:</a>
 
 * Explain "chaining".
@@ -267,11 +290,11 @@ add(2)(5); // 7
 
 *Question: What is the outcome of the two alerts below?*
 ```javascript
-var foo = "Hello"; 
-(function() { 
-  var bar = " World"; 
-  alert(foo + bar); 
-})(); 
+var foo = "Hello";
+(function() {
+  var bar = " World";
+  alert(foo + bar);
+})();
 alert(foo + bar);
 ```
 
@@ -284,7 +307,7 @@ foo.push(2);
 
 ####[[⬆]](#toc) <a name='fun'>Fun Questions:</a>
 
-* What's a cool project the you've recently worked on? 
+* What's a cool project the you've recently worked on?
 * What are some things you like about the developer tools you use?
 * Do you have any pet projects? What kind?
 * What's your favorite feature of Internet Explorer?
