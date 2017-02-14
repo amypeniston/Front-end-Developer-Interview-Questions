@@ -90,7 +90,7 @@ This file contains a number of front-end interview questions that can be used wh
 
   ```javascript
   (function slideshow(i) {
-    if (i === undefined) {i = 0;}
+
     var index = i;
     var slides = document.getElementsByClassName('slide');
     for (var i = 0; i < slides.length; i++) {
@@ -100,7 +100,7 @@ This file contains a number of front-end interview questions that can be used wh
     if (index > slides.length) {index = 1;}
     slides[index - 1].style.display = "block";
     setTimeout(slideshow,2000,index);
-  })();
+  })(0);
   ```
 * **What tools do you use to test your code's performance?**
   * Google PageSpeed Tools, Chrome Developer Tools
@@ -213,14 +213,27 @@ This file contains a number of front-end interview questions that can be used wh
 * What's the difference between an "attribute" and a "property"?
 * Why is extending built in JavaScript objects not a good idea?
 * Difference between document load event and document ready event?
-* What is the difference between `==` and `===`?
+* What is the difference between `==` and `===`? Give an example.
+  * Double equals performs type conversion between operands before checking their values for equality, whereas triple equals does not. Explicitly stated, in order for two operands to be triple equal they must be both equal in value and the same types.
+  ```javascript
+  123 == '123' // true
+  123 === '123' // false
+  ```
 * Explain the same-origin policy with regards to JavaScript.
 * Make this work:
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
 * Why is it called a Ternary expression, what does the word "Ternary" indicate?
-* What is `"use strict";`? what are the advantages and disadvantages to using it?
+  * A ternary expression is a 3-part statement that checks a condition and executes accordingly. Ternary is a word that comes from the n-ary word setup (along with unary and binary); the prefix of each of these n-ary words represents how many inputs the operand accepts- here, it's 3.
+  * A ternary operand (?) accepts three parameters: the condition, the action to be taken if true and action to be taken if false. For example:
+  ```javascript
+  if (starwars === 'the best') ? return 'yes, I agree' : return 'WHAT?!';
+  ```
+* What is `"use strict";`? What are the advantages and disadvantages to using it?
+  * This is a special mode that we can chose to handle our JS code at runtime. `"use strict"` enforces more rigorous code standards by making otherwise silent errors throw exceptions and by preventing certain actions. It can be applied to a whole file by placing the string at the top of a file or it can be used only in certain functions.
+  * Advantages: `"use strict"` will help pinpoint errors in buggy code, flag unsafe actions and restrict usage of unstable features.
+  * Disadvantages: It may cause compatibility issues in older browsers and will be difficult to integrate into existing code. When using global strict mode, you cannot concatenate scripts that are not using `"use strict"`.
 * Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, `"buzz"` at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
 * Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
 * Describe inheritance and the prototype chain in JavaScript and give an example (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
@@ -260,6 +273,19 @@ map["[Object object]"] = "foo";
 map["[Object object]"] = "bar";
 ```
   Now it is clear that we are overwriting the same key with a new value, `bar`. And hence `alert(map[foo]) = alert(["[Object object]"]) = "bar"`.
+* **What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block? (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
+    * Wrapping an entire source file encapsulates variables and preserves the namespace by preventing name conflicts with any other modules or libraries.
+    * This technique also allows us to use aliases for global variables. For example we can enable the use of jQuery's `$` reference by passing in the `jQuery` variable to the IIFE as follows:
+
+    ```javascript
+    (function($){ })(jQuery)
+    ```
+* **What is an n-ary operator? What are the three main operators in JS? Give examples of each.**
+  * n-ary operators accept a certain number of inputs based on their prefix, ranging from unary (1 input), to binary (2 inputs), to ternary (3 inputs).
+  * Unary operators: unary plus/minus (`+`/`-`) as in `-1`
+  * Binary operators: multiplication operator, the addition operator, the division operator as in `2 + 3`
+  * Ternary operators: `?:` as in `conditional ? truthy_block : falsey_block`
+
 ####[[⬆]](#toc) <a name='jquery'>jQuery Questions:</a>
 
 * Explain "chaining".
