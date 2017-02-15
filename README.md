@@ -138,17 +138,20 @@ This file contains a number of front-end interview questions that can be used wh
 
 ####[[⬆]](#toc) <a name='html'>HTML Questions:</a>
 
-* What's a `doctype` do?
-* What's the difference between standards mode and quirks mode?
-* What are the limitations when serving XHTML pages?
-* Are there any problems with serving pages as `application/xhtml+xml`?
-* How do you serve a page with content in multiple languages?
-* What kind of things must you be wary of when design or developing for multilingual sites?
-* What are `data-` attributes good for?
-* Consider HTML5 as an open web platform. What are the building blocks of HTML5?
-* Describe the difference between cookies, sessionStorage and localStorage.
-* Can you explain the difference between `GET` and `POST`?
-* Describe the difference between `<script>`, `<script async>` & `<script defer>`.
+* **What does a `doctype` do?**
+  * The `doctype` declaration is a required preamble that is placed at the very top of all pages to tell the browser what version of html is being written. The current recommendation is to use `<!doctype html>`, which signifies that the document is using future-safe standards mode. Leaving it out may cause browsers to use older rendering specs, producing unwanted results.
+* **What's the difference between standards mode and quirks mode?**
+  * The `doctype` definition was originally intended for markup validators, but it was adopted as a way to identify legacy code that would be incompatible with modern CSS rendering. The browser chooses a rendering via doctype sniffing; if it finds that the document is modern, it renders in standards mode. Otherwise it will render in quirks mode, which has a better chance of being compatible with legacy code.
+* **What are the limitations when serving XHTML pages?**
+
+* **Are there any problems with serving pages as `application/xhtml+xml`?**
+* **How do you serve a page with content in multiple languages?**
+* **What kind of things must you be wary of when design or developing for multilingual sites?**
+* **What are `data-` attributes good for?**
+* **Consider HTML5 as an open web platform. What are the building blocks of HTML5?**
+* **Describe the difference between cookies, sessionStorage and localStorage.**
+* **Can you explain the difference between `GET` and `POST`?**
+* **Describe the difference between `<script>`, `<script async>` & `<script defer>`.**
 
 ####[[⬆]](#toc) <a name='css'>CSS Questions:</a>
 * What is the difference between classes and ID's in CSS?
@@ -185,74 +188,72 @@ This file contains a number of front-end interview questions that can be used wh
 
 ####[[⬆]](#toc) <a name='js'>JS Questions:</a>
 
-* Explain event delegation
-* Explain how `this` works in JavaScript
-* Explain how prototypal inheritance works
-* How do you go about testing your JavaScript?
-* AMD vs. CommonJS?
-* Explain why the following doesn't work as an IIFE: `function foo(){ }();`.
-  * What needs to be changed to properly make it an IIFE?
-* What's the difference between a variable that is: `null`, `undefined` or `undeclared`?
-  * How would you go about checking for any of these states?
-* What is a closure, and how/why would you use one?
-* What's a typical use case for anonymous functions?
-* How do you organize your code? (module pattern, classical inheritance?)
-* What's the difference between host objects and native objects?
-* Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?
-* What's the difference between `.call` and `.apply`?
-* Explain `Function.prototype.bind`.
-* When do you optimize your code?
-* When would you use `document.write()`?
-* What's the difference between feature detection, feature inference, and using the UA string
-* Explain AJAX in as much detail as possible.
-* Explain how JSONP works (and how it's not really AJAX).
-* Have you ever used JavaScript templating?
-  * If so, what libraries have you used? (Mustache.js, Handlebars etc.)
-* Explain "hoisting".
-* Describe event bubbling.
-* What's the difference between an "attribute" and a "property"?
-* Why is extending built in JavaScript objects not a good idea?
-* Difference between document load event and document ready event?
-* What is the difference between `==` and `===`? Give an example.
+* **Explain event delegation**
+* **Explain how `this` works in JavaScript**
+* **Explain how prototypal inheritance works**
+* **How do you go about testing your JavaScript?**
+* **AMD vs. CommonJS?**
+* **Explain why the following doesn't work as an IIFE and what needs to be changed to make it function as desired:** `function foo(){ }();`.
+* **What's the difference between a variable that is: `null`, `undefined` or `undeclared`?**
+* **How would you go about checking for any of these states?**
+* **What is a closure, and how/why would you use one?**
+* **What's a typical use case for anonymous functions?**
+* **How do you organize your code? (module pattern, classical inheritance?)**
+* **What's the difference between host objects and native objects?**
+* **Difference between: `function Person(){}`, `var person = Person()`, and `var person = new Person()`?**
+* **What's the difference between `.call` and `.apply`?**
+* **Explain `Function.prototype.bind`.**
+* **When do you optimize your code?**
+* **When would you use `document.write()`?**
+* **What's the difference between feature detection, feature inference, and using the UA string.**
+* **Explain AJAX in as much detail as possible.**
+* **Explain how JSONP works (and how it's not really AJAX).
+* Have you ever used JavaScript templating? If so, which libraries?**
+* **Explain "hoisting".**
+* **Describe event bubbling.**
+* **What's the difference between an "attribute" and a "property"?**
+* **Why is extending built in JavaScript objects not a good idea?**
+* **Difference between document load event and document ready event?**
+* **What is the difference between `==` and `===`? Give an example.**
   * Double equals performs type conversion between operands before checking their values for equality, whereas triple equals does not. Explicitly stated, in order for two operands to be triple equal they must be both equal in value and the same types.
   ```javascript
   123 == '123' // true
   123 === '123' // false
   ```
-* Explain the same-origin policy with regards to JavaScript.
-* Make this work:
+* **Explain the same-origin policy with regards to JavaScript.**
+* **Make this work:**
 ```javascript
 duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 ```
-* Why is it called a Ternary expression, what does the word "Ternary" indicate?
+* **Why is it called a Ternary expression, what does the word "Ternary" indicate?**
   * A ternary expression is a 3-part statement that checks a condition and executes accordingly. Ternary is a word that comes from the n-ary word setup (along with unary and binary); the prefix of each of these n-ary words represents how many inputs the operand accepts- here, it's 3.
   * A ternary operand (?) accepts three parameters: the condition, the action to be taken if true and action to be taken if false. For example:
   ```javascript
   if (starwars === 'the best') ? return 'yes, I agree' : return 'WHAT?!';
   ```
-* What is `"use strict";`? What are the advantages and disadvantages to using it?
+* **What is `"use strict";`? What are the advantages and disadvantages to using it?**
   * This is a special mode that we can chose to handle our JS code at runtime. `"use strict"` enforces more rigorous code standards by making otherwise silent errors throw exceptions and by preventing certain actions. It can be applied to a whole file by placing the string at the top of a file or it can be used only in certain functions.
   * Advantages: `"use strict"` will help pinpoint errors in buggy code, flag unsafe actions and restrict usage of unstable features.
   * Disadvantages: It may cause compatibility issues in older browsers and will be difficult to integrate into existing code. When using global strict mode, you cannot concatenate scripts that are not using `"use strict"`.
-* Create a for loop that iterates up to `100` while outputting **"fizz"** at multiples of `3`, `"buzz"` at multiples of `5` and **"fizzbuzz"** at multiples of `3` and `5`
-* Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?
-* Describe inheritance and the prototype chain in JavaScript and give an example (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))
+* **Create a for loop that iterates up to `100` while outputting "fizz" at multiples of `3`, `"buzz"` at multiples of `5` and "fizzbuzz" at multiples of `3` and `5`.**
+* **Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?**
+* **Describe inheritance and the prototype chain in JavaScript and give an example (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
   * Inheritance in JavaScript is made possible because objects reference other objects called prototypes. When a reference is made to a property that an object does not itself contain, its prototype is checked. If the first prototype also does not contain this property, its prototype is checked. This process repeats until the end of the "prototype chain" is reached, upon which the property is set as undefined.
-```
-function Person() { this.species = "human" };
+  ```
+  function Person() { this.species = "human" };
 
-function Child() { this.age = "young" };
-Child.prototype = new Person();
+  function Child() { this.age = "young" };
+  Child.prototype = new Person();
 
-function Adult() { this.age = "mature" };
-Adult.prototype = new Person();
+  function Adult() { this.age = "mature" };
+  Adult.prototype = new Person();
 
-var sally = new Child();
-var fred = new Adult();
+  var sally = new Child();
+  var fred = new Adult();
 
-console.log(sally.species); // "human"
-console.log(fred.age); // "mature"
-```
+  console.log(sally.species); // "human"
+  console.log(fred.age); // "mature"
+  ```
 
 * **Compare and contrast objects and hashtables in JavaScript (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
   * In JavaScript, objects are essentially hashtables consisting of key-value pairs. Keys must be strings or will be converted to strings automatically.
@@ -268,17 +269,17 @@ map[bar] = "bar";
 alert(map[foo]);
 ```
   * In JavaScript, object keys must be strings and will be silently converted into a string if otherwise. When we set `map[foo] = "foo"`, since `foo` is an empty object and not a string, it is converted into a string using its `.toString()` method. Neither `foo` nor `bar` have custom `.toString()` methods so the default Object method is used. By default, `Object.toString() = "[Object object]"` and so we are essentially setting:
-```
-map["[Object object]"] = "foo";
-map["[Object object]"] = "bar";
-```
+  ```
+  map["[Object object]"] = "foo";
+  map["[Object object]"] = "bar";
+  ```
   Now it is clear that we are overwriting the same key with a new value, `bar`. And hence `alert(map[foo]) = alert(["[Object object]"]) = "bar"`.
 * **What is the significance of, and reason for, wrapping the entire content of a JavaScript source file in a function block? (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
     * Wrapping an entire source file encapsulates variables and preserves the namespace by preventing name conflicts with any other modules or libraries.
     * This technique also allows us to use aliases for global variables. For example we can enable the use of jQuery's `$` reference by passing in the `jQuery` variable to the IIFE as follows:
 
     ```javascript
-    (function($){ })(jQuery)
+    (function($){ })(jQuery);
     ```
 * **What is an n-ary operator? What are the three main operators in JS? Give examples of each.**
   * n-ary operators accept a certain number of inputs based on their prefix, ranging from unary (1 input), to binary (2 inputs), to ternary (3 inputs).
