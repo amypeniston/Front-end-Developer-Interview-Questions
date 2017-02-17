@@ -192,7 +192,17 @@ This file contains a number of front-end interview questions that can be used wh
 * **Explain how `this` works in JavaScript**
 * **Explain how prototypal inheritance works**
 * **How do you go about testing your JavaScript?**
+  * The two main testing methodologies are Test-Driven Development (TDD) and Behavior-Driven Development (BDD). The main difference being in the languages used to make testable assertions. I have experience with BDD unit testing (ex: `expect(x).toEqual(y)`) using Mocha (provide test structure), Karma (run tests and display results) and Chai (make assertions).
+  * There are a number of different types of tests:
+    * Unit Tests: Small, test a specific chunk of code.
+    * Integration Tests: Ensure that separate parts of your application work in tandem.
+    * Acceptance Tests: Showcase required functionality for management or stake holders.
+    * Regression Tests: The process of re-running unit tests after making any necessary changes to fix failing integration tests.
 * **AMD vs. CommonJS?**
+  * AMD and CommonJS are the two most prevalent JavaScript loaders. Their purpose is to help organize our applications' business logic, loading modules of code either asynchronously (AMD) or synchronously (CommonJS) in a more performant manner.
+  * Recently, CommonJS has been implemented by Node.js on the server (using `require` and `module.exports`) and webpack and browserify client-side. Meanwhile, AMD's async callback-style loading is seen in require.js and Dojo.
+  * Happily, ES6 brings us native support for both synchronous and asynchronous modules using the `import` and `export` keywords.
+  * The purpose of modularizing your JavaScript code (and rise in popularity of these loader technologies) stems from the increasing difficulty in managing namespaces with 3rd-party dependencies. There is also a need to control when dependencies are in the load chain.
 * **Explain why the following doesn't work as an IIFE and what needs to be changed to make it function as desired:** `function foo(){ }();`.
 * **What's the difference between a variable that is: `null`, `undefined` or `undeclared`?**
 * **How would you go about checking for any of these states?**
@@ -233,7 +243,14 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
   ```
 * **What is `"use strict";`? What are the advantages and disadvantages to using it?**
   * This is a special mode that we can chose to handle our JS code at runtime. `"use strict"` enforces more rigorous code standards by making otherwise silent errors throw exceptions and by preventing certain actions. It can be applied to a whole file by placing the string at the top of a file or it can be used only in certain functions.
-  * Advantages: `"use strict"` will help pinpoint errors in buggy code, flag unsafe actions and restrict usage of unstable features.
+  * Advantages: `"use strict"` will help pinpoint errors in buggy code, flag unsafe actions and restrict usage of unstable features. It will also prevent global variable leakage because the compiler will no longer create a variable when it comes to assign a value to an identifier that has not been declared. For example:
+  ```javascript
+  function baz(foo) {
+    foo = "bar";
+    bam = "yay";
+  }
+  ```
+  In strict mode, the compiler will throw an error instead of silently creating a global variable when it hits the assignment `bam = "yay"`. 
   * Disadvantages: It may cause compatibility issues in older browsers and will be difficult to integrate into existing code. When using global strict mode, you cannot concatenate scripts that are not using `"use strict"`.
 * **Create a for loop that iterates up to `100` while outputting "fizz" at multiples of `3`, `"buzz"` at multiples of `5` and "fizzbuzz" at multiples of `3` and `5`.**
 * **Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?**
@@ -257,6 +274,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
 
 * **Compare and contrast objects and hashtables in JavaScript (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
   * In JavaScript, objects are essentially hashtables consisting of key-value pairs. Keys must be strings or will be converted to strings automatically.
+
 * **Consider the code snippet below. What will the alert display? (Source: [TopTal Hiring Guide](https://www.toptal.com/javascript#hiring-guide))**
 ```javascript
 var foo = new Object();
