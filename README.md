@@ -12,6 +12,7 @@ This file contains a number of front-end interview questions that can be used wh
   1. [JS Questions](#js)
   1. [jQuery Questions](#jquery)
   1. [Coding Questions](#jscode)
+  1. [CS Questions](#cs)
   1. [Fun Questions](#fun)
 
 ## <a name='toc'>Getting Involved</a>
@@ -190,7 +191,18 @@ This file contains a number of front-end interview questions that can be used wh
 
 * **Explain event delegation**
 * **Explain how `this` works in JavaScript**
+  * Every function, while executing, has a reference to its own execution context, called `this`. We must check how the function is called in order to determine how `this` is defined. Rules in increasing order of precedence:
+    1. Normal function calls, i.e. `foo()`, the default bind rule applies: if in strict mode, `this` is `undefined`; else, `this` defaults to the global object.
+    1. Object property reference at call-site, i.e. `obj.foo()`, the implicit binding rule applies: the owning object becomes the `this` binding.
+    1. If we use `call`, `apply` or `bind` at the call-site, the explicit binding rule applies: the argument of the function is set to be the `this` binding.
+    1. If we use the `new` keyword, hijacking a normal function call to be a constructor call, the `this` binding is set to the newly created object.
 * **Explain how prototypal inheritance works**
+  * The term "prototypal inheritance" in JavaScript is a bit of a misnomer. Unlike classical languages, two objects in JavaScript stay linked to each other through an internal `prototype` chain. This `prototype` object exists as a mechanism for `get` lookups, which first searches for a property/method on the lowest-level object before traversing upwards through the chain until no more linked objects are left to traverse (`null`). Instead of inheriting down the chain, we delegate up it.
+  * Check the `__proto__` property of an object to see to which `prototype` object it is linked.
+  * There are a few different syntax choices for creating linked objects:
+    1. Create a new object and assign it a prototype with `var obj = Object.create(proto)`.
+    1. Use the `new` keyword with a normal constructor function (the `__proto__` of the new object will be equal to the `prototype` of the constructor at call-time).
+    1. Use the `new` keyword with the new `class`/`extend` syntax.
 * **How do you go about testing your JavaScript?**
   * The two main testing methodologies are Test-Driven Development (TDD) and Behavior-Driven Development (BDD). The main difference being in the languages used to make testable assertions. I have experience with BDD unit testing (ex: `expect(x).toEqual(y)`) using Mocha (provide test structure), Karma (run tests and display results) and Chai (make assertions).
   * There are a number of different types of tests:
@@ -204,8 +216,7 @@ This file contains a number of front-end interview questions that can be used wh
   * Happily, ES6 brings us native support for both synchronous and asynchronous modules using the `import` and `export` keywords.
   * The purpose of modularizing your JavaScript code (and rise in popularity of these loader technologies) stems from the increasing difficulty in managing namespaces with 3rd-party dependencies. There is also a need to control when dependencies are in the load chain.
 * **Explain why the following doesn't work as an IIFE and what needs to be changed to make it function as desired:** `function foo(){ }();`.
-* **What's the difference between a variable that is: `null`, `undefined` or `undeclared`?**
-* **How would you go about checking for any of these states?**
+* **What's the difference between a variable that is: `null`, `undefined` or `undeclared`? How would you go about checking for any of these states?**
 * **What is a closure, and how/why would you use one?**
 * **What's a typical use case for anonymous functions?**
 * **How do you organize your code? (module pattern, classical inheritance?)**
@@ -250,7 +261,7 @@ duplicate([1,2,3,4,5]); // [1,2,3,4,5,1,2,3,4,5]
     bam = "yay";
   }
   ```
-  In strict mode, the compiler will throw an error instead of silently creating a global variable when it hits the assignment `bam = "yay"`. 
+  In strict mode, the compiler will throw an error instead of silently creating a global variable when it hits the assignment `bam = "yay"`.
   * Disadvantages: It may cause compatibility issues in older browsers and will be difficult to integrate into existing code. When using global strict mode, you cannot concatenate scripts that are not using `"use strict"`.
 * **Create a for loop that iterates up to `100` while outputting "fizz" at multiples of `3`, `"buzz"` at multiples of `5` and "fizzbuzz" at multiples of `3` and `5`.**
 * **Why is it, in general, a good idea to leave the global scope of a website as-is and never touch it?**
@@ -317,23 +328,49 @@ alert(map[foo]);
 
 ####[[⬆]](#toc) <a name='jscode'>Code Questions:</a>
 
-*Question: How would you make this work?*
+**Question: What is the value of foo?**
+
+```javascript
+var foo = 10 + '20';
+```
+
+JavaScript will type convert the Number `10` to the String `'10'` and concatenate the two values: `'1020'`.
+
+**Question: How would you make this work?**
 ```javascript
 add(2, 5); // 7
 add(2)(5); // 7
 ```
 
-*Question: What value is returned from the following statement?*
+```javascript
+function add(a, b) {
+  if (arguments.length === 2) {
+    return a + b;
+  } else {
+    return function(c) {
+      return a + c;
+    }
+  }
+}
+```
+
+**Question: What value is returned from the following statement?**
 ```javascript
 "i'm a lasagne hog".split("").reverse().join("");
 ```
 
-*Question: What is the value of `window.foo`?*
+```javascript
+"goh engasal a m'i"
+```
+
+**Question: What is the value of `window.foo`?**
 ```javascript
 ( window.foo || ( window.foo = "bar" ) );
 ```
 
-*Question: What is the outcome of the two alerts below?*
+Since `window.foo` does not exist, the assignment on right side of the comparison takes place, setting `window.foo = "bar"`.
+
+**Question: What is the outcome of the two alerts below?**
 ```javascript
 var foo = "Hello";
 (function() {
@@ -343,12 +380,42 @@ var foo = "Hello";
 alert(foo + bar);
 ```
 
-*Question: What is the value of `foo.length`?*
+Inside of the IIFE, the engine find a reference to the variable `bar`. It has to look out to the global scope to find reference to the variable `foo`. So the outcome of the first alert is "Hello World".
+
+Since we are not in strict mode, the reference to `bar` outside of the IIFE results in a new variable `bar` being created. Since this new variable does not have an initialized value, it is `undefined`. The second alert would therefore throw an exception, `ReferenceError bar is not defined`.
+
+**Question: What is the value of `foo.length`?**
 ```javascript
 var foo = [];
 foo.push(1);
 foo.push(2);
 ```
+
+Answer: `length` is equal to `max index + 1 = 2`.
+
+**Question: What is the value of foo.x?**
+```javascript
+var foo = {n: 1};
+var bar = foo;
+foo.x = foo = {n: 2};
+```
+
+The third line is the same as writing `foo.x = (foo = {n: 2})`, which assigns `foo` equal to an object `{n: 2}`, referencing the original object by the left hand side of the assignment, `foo.x`. While `foo.x` is `undefined`, `bar.x = {n: 2}`.
+
+**Question: What does the following code print?**
+```javascript
+console.log('one');
+setTimeout(function() {
+  console.log('two');
+}, 0);
+console.log('three');
+```
+
+The `0` passed into `setTimeout` will defer execution to a subsequent event loop. So this will log `one`, `three`, `two`. Technically the anonymous function will return undefined between `three` and `two`.
+
+####[[⬆]](#cs) <a name='fun'>CS Questions:</a>
+
+* Explain the difference between Stacks and Queues. What is one application?
 
 ####[[⬆]](#toc) <a name='fun'>Fun Questions:</a>
 
