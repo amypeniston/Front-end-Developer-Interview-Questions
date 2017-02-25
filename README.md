@@ -216,7 +216,25 @@ This file contains a number of front-end interview questions that can be used wh
   * Happily, ES6 brings us native support for both synchronous and asynchronous modules using the `import` and `export` keywords.
   * The purpose of modularizing your JavaScript code (and rise in popularity of these loader technologies) stems from the increasing difficulty in managing namespaces with 3rd-party dependencies. There is also a need to control when dependencies are in the load chain.
 * **Explain why the following doesn't work as an IIFE and what needs to be changed to make it function as desired:** `function foo(){ }();`.
+  * This is the equivalent to writing:
+  ```javascript
+  function foo() {
+
+  }
+
+  ();
+  ```
+  Clearly, the hanging invocation has no connection to the function declaration and therefore cannot execute it.
+  * Instead we have to wrap the function declaration in parentheses to first convert it into a function expression. Then we can immediately invoke it:
+  ```javascript
+  (function foo() {
+
+  })();
+  ```
 * **What's the difference between a variable that is: `null`, `undefined` or `undeclared`? How would you go about checking for any of these states?**
+  * `null`: a specific value that is assigned to a variable as a representation of no value. Oddly, `null` is an object. Check with `foo === null`.
+  * `undefined`: means a variable has not been declared but not initialized. Check with `typeof(foo)`.
+  * `undeclared`: a variable that has no declaration within any of the scopes we have access to.
 * **What is a closure, and how/why would you use one?**
 * **What's a typical use case for anonymous functions?**
 * **How do you organize your code? (module pattern, classical inheritance?)**
